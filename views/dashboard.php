@@ -7,7 +7,6 @@ while($row = mysqli_fetch_assoc($resGraph)) {
     $values[] = $row['total'];
 }
 
-// Logic simpan batas baru
 if (isset($_POST['update_batas'])) {
     $new_batas = $_POST['batas_tinggi'];
     mysqli_query($conn, "UPDATE settings SET batas_tinggi = '$new_batas' WHERE id = 1");
@@ -17,7 +16,6 @@ $set = mysqli_fetch_assoc(mysqli_query($conn, "SELECT batas_tinggi FROM settings
 $batas = $set['batas_tinggi'] ?? 20;
 ?>
 
-<!-- Header Section -->
 <div class="flex justify-between items-center mb-10">
     <div>
         <h2 class="text-4xl font-black text-white tracking-tighter uppercase">Dashboard</h2>
@@ -31,10 +29,8 @@ $batas = $set['batas_tinggi'] ?? 20;
     </div>
 </div>
 
-<!-- TOP GRID: Skala Depot, Total Sales, & Prediksi (Satu Baris Sejajar) -->
 <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-8">
     
-    <!-- 1. Skala Depot -->
     <div class="glass p-6 rounded-[32px] border border-white/5 flex flex-col justify-between">
         <h4 class="text-cyan-400 text-[10px] font-bold uppercase tracking-widest mb-4">Skala Depot (Batas)</h4>
         <div class="flex items-center justify-between">
@@ -51,7 +47,6 @@ $batas = $set['batas_tinggi'] ?? 20;
         </div>
     </div>
 
-    <!-- 2. Total Penjualan -->
     <div class="glass p-6 rounded-[32px] border border-white/5 flex flex-col justify-center">
         <p class="text-slate-500 text-[10px] uppercase tracking-widest mb-1">Akumulasi Penjualan</p>
         <div class="flex items-baseline gap-2">
@@ -77,8 +72,6 @@ $batas = $set['batas_tinggi'] ?? 20;
     </div>
 </div>
 
-
-<!-- BOTTOM: Chart Section -->
 <div class="glass p-8 rounded-[40px] border border-white/5 overflow-hidden">
     <div class="flex justify-between items-center mb-6">
         <p class="text-slate-500 text-[10px] uppercase tracking-widest font-bold font-mono">Sales Statistics (7 Days)</p>
