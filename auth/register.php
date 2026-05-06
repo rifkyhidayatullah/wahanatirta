@@ -7,14 +7,12 @@ if (isset($_POST['register'])) {
     $password = $_POST['password'];
     $confirm  = $_POST['confirm_password'];
 
-    // Cek password sama atau tidak
     if ($password !== $confirm) {
         $error_msg = "Konfirmasi password tidak sesuai!";
     } else {
-        // Enkripsi password
+
         $hashed_password = password_hash($password, PASSWORD_DEFAULT);
         
-        // Simpan ke database
         $q = "INSERT INTO users (username, password) VALUES ('$username', '$hashed_password')";
         if (mysqli_query($conn, $q)) {
             echo "<script>alert('Registrasi Berhasil! Silakan Login'); window.location='login.php';</script>";
